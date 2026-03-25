@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pyramids Cup 2026 — Discord Operations Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #f0a500;
+    --gold-dim: #b07a00;
+    --teal: #00d4c8;
+    --teal-dim: #007a75;
+    --bg: #0a0c10;
+    --panel: #10141c;
+    --panel2: #161c28;
+    --border: #1e2a3a;
+    --text: #c8d8e8;
+    --muted: #5a7090;
+    --red: #ff4b4b;
+    --green: #29e07f;
+    --purple: #9b6eff;
+    --white: #eef4ff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #05080e 0%, #0d1520 60%, #0a1018 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(240,165,0,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,212,200,0.05) 0%, transparent 60%);
+  }
+  .header-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--teal);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(22px, 4vw, 42px);
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 1px;
+    line-height: 1.15;
+  }
+  header h1 span { color: var(--white); }
+  .header-sub {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .header-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 20px;
+  }
+  .pill {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid;
+    letter-spacing: 1px;
+  }
+  .pill-gold  { color: var(--gold);   border-color: var(--gold-dim);  background: rgba(240,165,0,0.08); }
+  .pill-teal  { color: var(--teal);   border-color: var(--teal-dim);  background: rgba(0,212,200,0.07); }
+  .pill-green { color: var(--green);  border-color: #1a7048;          background: rgba(41,224,127,0.07); }
+
+  /* ── LAYOUT ── */
+  .wrapper { max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
+
+  /* ── SECTION TITLES ── */
+  .section {
+    margin-top: 52px;
+  }
+  .section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--teal);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+  }
+  .section-title .num {
+    color: var(--gold);
+    margin-right: 10px;
+  }
+
+  /* ── OVERVIEW CARDS ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  }
+  .stat-card.gold::before  { background: var(--gold); }
+  .stat-card.teal::before  { background: var(--teal); }
+  .stat-card.purple::before { background: var(--purple); }
+  .stat-card.green::before  { background: var(--green); }
+  .stat-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-card.gold .stat-num  { color: var(--gold); }
+  .stat-card.teal .stat-num  { color: var(--teal); }
+  .stat-card.purple .stat-num{ color: var(--purple); }
+  .stat-card.green .stat-num { color: var(--green); }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'Share Tech Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── CHANNEL TABLE ── */
+  .channel-group {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .channel-group-header {
+    background: var(--panel2);
+    padding: 10px 18px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ch-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .channel-row {
+    display: grid;
+    grid-template-columns: 26px 200px 1fr 110px;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    align-items: center;
+  }
+  .channel-row:hover { background: rgba(255,255,255,0.02); }
+  .ch-icon {
+    padding: 10px 0 10px 16px;
+    font-size: 14px;
+  }
+  .ch-name {
+    padding: 10px 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--white);
+  }
+  .ch-desc {
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .ch-perm {
+    padding: 10px 16px 10px 0;
+    font-size: 11px;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: right;
+  }
+  .perm-pub  { color: var(--green); }
+  .perm-ro   { color: var(--gold); }
+  .perm-adm  { color: var(--red); }
+  .perm-str  { color: var(--purple); }
+
+  /* ── VOICE CHANNELS ── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .voice-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .voice-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .voice-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .voice-desc {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── STREAMING PLAN ── */
+  .streamer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+  }
+  .streamer-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .streamer-header {
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .streamer-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .streamer-info { flex: 1; }
+  .streamer-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .streamer-role {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'Share Tech Mono', monospace;
+    margin-top: 2px;
+  }
+  .streamer-body {
+    padding: 0 18px 16px;
+  }
+  .coverage-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .coverage-row:last-child { border-bottom: none; }
+  .cov-stage { color: var(--text); }
+  .cov-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+  .cb-none   { background: rgba(90,112,144,0.2); color: var(--muted); }
+  .cb-solo   { background: rgba(0,212,200,0.12); color: var(--teal); }
+  .cb-shared { background: rgba(155,110,255,0.15); color: var(--purple); }
+  .cb-main   { background: rgba(240,165,0,0.15); color: var(--gold); }
+
+  .streaming-rules {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--teal);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-top: 18px;
+  }
+  .streaming-rules h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    color: var(--teal);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .rule-item {
+    display: flex; gap: 10px;
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .rule-bullet { color: var(--gold); flex-shrink: 0; }
+
+  /* ── ANNOUNCEMENTS ── */
+  .announcement-block {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .ann-header {
+    background: var(--panel2);
+    padding: 10px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .ann-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+  .ann-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+  }
+  .ann-body {
+    padding: 18px 20px;
+  }
+  .discord-msg {
+    background: #1e2535;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: #b8c8d8;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-break: break-word;
+    position: relative;
+  }
+  .discord-msg::before {
+    content: '# Discord Message';
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .msg-gold    { color: var(--gold); font-weight: bold; }
+  .msg-teal    { color: var(--teal); }
+  .msg-green   { color: var(--green); }
+  .msg-muted   { color: var(--muted); }
+  .msg-em      { color: var(--white); font-style: italic; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ── MISC ── */
+  .note {
+    background: rgba(240,165,0,0.07);
+    border: 1px solid rgba(240,165,0,0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: var(--text);
+    margin-top: 16px;
+  }
+  .note strong { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .channel-row { grid-template-columns: 26px 1fr; }
+    .ch-perm, .ch-desc { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-badge">OPERATIONS DOCUMENT · INTERNAL USE</div>
+  <h1>🏺 Pyramids Cup <span>2026</span></h1>
+  <h1 style="color:var(--teal); font-size: clamp(14px,2.5vw,22px); margin-top:4px;">Discord Server Operations Plan</h1>
+  <div class="header-sub">Wild Rift · MENA Region · Pyramids Queue × Vicious Esports · Rift Legends Program</div>
+  <div class="header-pills">
+    <span class="pill pill-gold">📅 Apr 21 – May 15, 2026</span>
+    <span class="pill pill-teal">🌐 EU Server</span>
+    <span class="pill pill-green">⚔️ 40 Teams · 2 Qualifiers · Playoffs</span>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="section-label">Section 01</div>
+    <div class="section-title"><span class="num">◈</span>Tournament Overview</div>
+
+    <div class="overview-grid">
+      <div class="stat-card gold">
+        <div class="stat-num">40</div>
+        <div class="stat-label">Total Teams</div>
+      </div>
+      <div class="stat-card teal">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Stages</div>
+      </div>
+      <div class="stat-card purple">
+        <div class="stat-num">25</div>
+        <div class="stat-label">Days of Play</div>
+      </div>
+      <div class="stat-card green">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Streamers</div>
+      </div>
+    </div>
+
+    <div style="background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px 22px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px;">
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">QUALIFIER 1</div>
+          <div style="font-size:12px;color:var(--text);">20 teams · 6 Swiss Rounds · Apr 21–24</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">Top 4 advance to Playoffs · Not Broadcasted</div>
+        </div>
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">QUALIFIER 2</div>
+          <div style="font-size:12px;color:var(--text);">20 teams · 6 Swiss Rounds · Apr 28 – May 1</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">Top 4 advance to Playoffs · Not Broadcasted</div>
+        </div>
+        <div>
+          <div style="font-family:'Orbitron',sans-serif;font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:8px;">PLAYOFFS</div>
+          <div style="font-size:12px;color:var(--text);">8 teams · Round Robin Groups + Single Elim · May 5–15</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:4px;">Fearless Draft · Finals Bo5 · 🔴 Streamed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEXT CHANNELS -->
+  <div class="section">
+    <div class="section-label">Section 02</div>
+    <div class="section-title"><span class="num">◈</span>Text Channels to Create</div>
+
+    <div class="overview-grid" style="grid-template-columns:repeat(3,1fr); max-width:420px;">
+      <div class="stat-card teal"><div class="stat-num">22</div><div class="stat-label">Text Channels</div></div>
+      <div class="stat-card purple"><div class="stat-num">5</div><div class="stat-label">Categories</div></div>
+      <div class="stat-card green"><div class="stat-num">40+</div><div class="stat-label">Match Channels</div></div>
+    </div>
+
+    <!-- INFO -->
+    <div class="channel-group">
+      <div class="channel-group-header">
+        <span class="ch-dot" style="background:#5865f2;"></span>
+        📋 INFORMATION (Read-Only)
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">📌</div>
+        <div class="ch-name">#welcome</div>
+        <div class="ch-desc">Tournament intro, server rules, links to rulebook & registration</div>
+        <div class="ch-perm perm-ro">READ-ONLY</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">📖</div>
+        <div class="ch-name">#rulebook</div>
+        <div class="ch-desc">Official Pyramids Cup 2026 rulebook pinned</div>
+        <div class="ch-perm perm-ro">READ-ONLY</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">📣</div>
+        <div class="ch-name">#announcements</div>
+        <div class="ch-desc">Official tournament announcements, schedule updates, results</div>
+        <div class="ch-perm perm-ro">READ-ONLY</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🏆</div>
+        <div class="ch-name">#bracket-standings</div>
+        <div class="ch-desc">Live bracket image, points table, updated after each round</div>
+        <div class="ch-perm perm-ro">READ-ONLY</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🚫</div>
+        <div class="ch-name">#banned-champions</div>
+        <div class="ch-desc">List of any globally banned champions (updated pre-tournament)</div>
+        <div class="ch-perm perm-ro">READ-ONLY</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🎁</div>
+        <div class="ch-name">#prize-pool</div>
+        <div class="ch-desc">Prize distribution table when confirmed</div>
+        <div class="ch-perm perm-ro">READ-ONLY</div>
+      </div>
+    </div>
+
+    <!-- GENERAL -->
+    <div class="channel-group">
+      <div class="channel-group-header">
+        <span class="ch-dot" style="background:#57f287;"></span>
+        💬 GENERAL (Public)
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">💬</div>
+        <div class="ch-name">#general-chat</div>
+        <div class="ch-desc">Open discussion for all participants and spectators</div>
+        <div class="ch-perm perm-pub">PUBLIC</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">❓</div>
+        <div class="ch-name">#questions-and-help</div>
+        <div class="ch-desc">Players ask admins questions (admins reply here)</div>
+        <div class="ch-perm perm-pub">PUBLIC</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🖼️</div>
+        <div class="ch-name">#clips-and-highlights</div>
+        <div class="ch-desc">Players/streamers share match highlights & clips</div>
+        <div class="ch-perm perm-pub">PUBLIC</div>
+      </div>
+    </div>
+
+    <!-- REGISTRATION -->
+    <div class="channel-group">
+      <div class="channel-group-header">
+        <span class="ch-dot" style="background:#fee75c;"></span>
+        📝 REGISTRATION & ADMIN
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">📋</div>
+        <div class="ch-name">#team-registration</div>
+        <div class="ch-desc">Submit team name, roster, captain info</div>
+        <div class="ch-perm perm-pub">PUBLIC</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🔄</div>
+        <div class="ch-name">#roster-changes</div>
+        <div class="ch-desc">Roster change requests (between stages only)</div>
+        <div class="ch-perm perm-pub">PUBLIC</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">⚠️</div>
+        <div class="ch-name">#reports-and-disputes</div>
+        <div class="ch-desc">Submit rule violation reports with evidence (screenshots required)</div>
+        <div class="ch-perm perm-pub">PUBLIC</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🔒</div>
+        <div class="ch-name">#admin-only</div>
+        <div class="ch-desc">Internal admin coordination (hidden from players)</div>
+        <div class="ch-perm perm-adm">ADMIN ONLY</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">📊</div>
+        <div class="ch-name">#admin-match-log</div>
+        <div class="ch-desc">Internal match result tracking and conflict log</div>
+        <div class="ch-perm perm-adm">ADMIN ONLY</div>
+      </div>
+    </div>
+
+    <!-- STREAMING -->
+    <div class="channel-group">
+      <div class="channel-group-header">
+        <span class="ch-dot" style="background:#eb459e;"></span>
+        🎥 BROADCAST & STREAMING
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🎥</div>
+        <div class="ch-name">#stream-schedule</div>
+        <div class="ch-desc">Which games are being streamed and by whom, daily updates</div>
+        <div class="ch-perm perm-ro">READ-ONLY</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">🙋</div>
+        <div class="ch-name">#stream-requests</div>
+        <div class="ch-desc">Content creators request to stream a match in this channel</div>
+        <div class="ch-perm perm-str">STREAMER+</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">💬</div>
+        <div class="ch-name">#streamer-lounge</div>
+        <div class="ch-desc">Private channel for the 3 streamers to coordinate coverage</div>
+        <div class="ch-perm perm-str">STREAMER ONLY</div>
+      </div>
+    </div>
+
+    <!-- MATCH CHANNELS -->
+    <div class="channel-group">
+      <div class="channel-group-header">
+        <span class="ch-dot" style="background:#ed4245;"></span>
+        ⚔️ MATCH CHANNELS (Created per round)
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">⚔️</div>
+        <div class="ch-name">#match-q1-r1-A vs B</div>
+        <div class="ch-desc">Per-match channels: side selection, lobby ready, results screenshot</div>
+        <div class="ch-perm perm-pub">TEAMS + ADMIN</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">⚔️</div>
+        <div class="ch-name">#match-q1-r1-C vs D</div>
+        <div class="ch-desc">Repeated for every match pair each round</div>
+        <div class="ch-perm perm-pub">TEAMS + ADMIN</div>
+      </div>
+      <div class="channel-row">
+        <div class="ch-icon">⚔️</div>
+        <div class="ch-name">#match-playoffs-SF1</div>
+        <div class="ch-desc">Playoff-specific channels for Semi Finals, 3rd Place, Finals</div>
+        <div class="ch-perm perm-pub">TEAMS + ADMIN</div>
+      </div>
+    </div>
+
+    <div class="note"><strong>📌 Note:</strong> Match channels should be created fresh for each round and archived after results are confirmed. During Qualifiers: 10 matches per round × 6 rounds × 2 qualifiers = ~120 match channels total (rotate/archive between rounds).</div>
+  </div>
+
+  <!-- VOICE CHANNELS -->
+  <div class="section">
+    <div class="section-label">Section 03</div>
+    <div class="section-title"><span class="num">◈</span>Voice Channels to Create</div>
+
+    <div class="overview-grid" style="grid-template-columns:repeat(2,1fr); max-width:280px;">
+      <div class="stat-card teal"><div class="stat-num">12</div><div class="stat-label">Voice Channels</div></div>
+      <div class="stat-card gold"><div class="stat-num">4</div><div class="stat-label">Categories</div></div>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-icon">🔊</div>
+        <div>
+          <div class="voice-name">🏛️ General Lobby</div>
+          <div class="voice-desc">Open waiting room for all participants between matches</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🔇</div>
+        <div>
+          <div class="voice-name">🔕 AFK Room</div>
+          <div class="voice-desc">Muted waiting room, 0 kbps bitrate</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🎙️</div>
+        <div>
+          <div class="voice-name">🎙️ Admin War Room</div>
+          <div class="voice-desc">Admin-only coordination during live rounds</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">⚔️</div>
+        <div>
+          <div class="voice-name">⚔️ Match Room 1</div>
+          <div class="voice-desc">Team voice for match pair 1 (admin monitored)</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">⚔️</div>
+        <div>
+          <div class="voice-name">⚔️ Match Room 2</div>
+          <div class="voice-desc">Team voice for match pair 2</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">⚔️</div>
+        <div>
+          <div class="voice-name">⚔️ Match Room 3</div>
+          <div class="voice-desc">Team voice for match pair 3 (Playoffs)</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🎥</div>
+        <div>
+          <div class="voice-name">🎥 Streamer Booth 1</div>
+          <div class="voice-desc">Streamer A private booth (Playoffs coverage)</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🎥</div>
+        <div>
+          <div class="voice-name">🎥 Streamer Booth 2</div>
+          <div class="voice-desc">Streamer B private booth</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🎥</div>
+        <div>
+          <div class="voice-name">🎥 Streamer Booth 3</div>
+          <div class="voice-desc">Streamer C private booth</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🏆</div>
+        <div>
+          <div class="voice-name">🏆 Playoff Stage</div>
+          <div class="voice-desc">Main stage voice for Semifinals / Finals (streamed)</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🔒</div>
+        <div>
+          <div class="voice-name">🔒 Team Scrimmage A</div>
+          <div class="voice-desc">Private team voice (for teams prepping between rounds)</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-icon">🔒</div>
+        <div>
+          <div class="voice-name">🔒 Team Scrimmage B</div>
+          <div class="voice-desc">Second private team voice room</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STREAMING PLAN -->
+  <div class="section">
+    <div class="section-label">Section 04</div>
+    <div class="section-title"><span class="num">◈</span>Streaming Plan — 3 Streamers</div>
+
+    <div class="streamer-grid">
+      <!-- Streamer 1 -->
+      <div class="streamer-card">
+        <div class="streamer-header" style="background:rgba(240,165,0,0.07); border-bottom:1px solid var(--border);">
+          <div class="streamer-avatar" style="background:rgba(240,165,0,0.15); color:var(--gold);">S1</div>
+          <div class="streamer-info">
+            <div class="streamer-name">Streamer A</div>
+            <div class="streamer-role">LEAD BROADCASTER · PLAYOFFS HOST</div>
+          </div>
+        </div>
+        <div class="streamer-body">
+          <div class="coverage-row"><span class="cov-stage">Qualifier 1 (Apr 21–24)</span><span class="cov-badge cb-none">NOT STREAMED</span></div>
+          <div class="coverage-row"><span class="cov-stage">Qualifier 2 (Apr 28–May 1)</span><span class="cov-badge cb-none">NOT STREAMED</span></div>
+          <div class="coverage-row"><span class="cov-stage">Playoffs: Group Stage (May 5–13)</span><span class="cov-badge cb-main">GROUP A HOST</span></div>
+          <div class="coverage-row"><span class="cov-stage">Playoffs: Semifinals (May 14)</span><span class="cov-badge cb-main">SF1 MAIN</span></div>
+          <div class="coverage-row"><span class="cov-stage">Playoffs: Grand Finals (May 15)</span><span class="cov-badge cb-main">FINALS HOST</span></div>
+        </div>
+      </div>
+
+      <!-- Streamer 2 -->
+      <div class="streamer-card">
+        <div class="streamer-header" style="background:rgba(0,212,200,0.06); border-bottom:1px solid var(--border);">
+          <div class="streamer-avatar" style="background:rgba(0,212,200,0.1); color:var(--teal);">S2</div>
+          <div class="streamer-info">
+            <div class="streamer-name">Streamer B</div>
+            <div class="streamer-role">QUALIFIER CASTER · CO-BROADCASTER</div>
+          </div>
+        </div>
+        <div class="streamer-body">
+          <div class="coverage-row"><span class="cov-stage">Qualifier 1 — Apr 23 (Rds 3&4)</span><span class="cov-badge cb-solo">SOLO STREAM</span></div>
+          <div class="coverage-row"><span class="cov-stage">Qualifier 1 — Apr 24 (Rds 5&6)</span><span class="cov-badge cb-solo">SOLO STREAM</span></div>
+          <div class="coverage-row"><span class="cov-stage">Qualifier 2 — Apr 30 (Rds 3&4)</span><span class="cov-badge cb-solo">SOLO STREAM</span></div>
+          <div class="coverage-row"><span class="cov-stage">Qualifier 2 — May 1 (Rds 5&6)</span><span class="cov-badge cb-solo">SOLO STREAM</span></div>
+          <div class="coverage-row"><span class="cov-stage">Playoffs: Group Stage</span><span class="cov-badge cb-main">GROUP B HOST</span></div>
+          <div class="coverage-row"><span class="cov-stage">Playoffs: Semifinals (May 14)</span><span class="cov-badge cb-shared">SF2 SUPPORT</span></div>
+          <div class="coverage-row"><span class="cov-stage">Grand Finals (May 15)</span><span class="cov-badge cb-shared">CO-CAST</span></div>
+        </div>
+      </div>
+
+      <!-- Streamer 3 -->
+      <div class="streamer-card">
+        <div class="streamer-header" style="background:rgba(155,110,255,0.06); border-bottom:1px solid var(--border);">
+          <div class="streamer-avatar" style="background:rgba(155,110,255,0.12); color:var(--purple);">S3</div>
+          <div class="streamer-info">
+            <div class="streamer-name">Streamer C</div>
+            <div class="streamer-role">FLEXIBLE STREAMER · HIGHLIGHT CASTER</div>
+          </div>
+        </div>
+        <div class="streamer-body">
+          <div class="coverage-row"><span class="cov-stage">Qualifier 1 — Apr 21–22 (Rds 1&2)</span><span class="cov-badge cb-solo">SOLO STREAM</span></div>
+          <div class="coverage-row"><span class="cov-stage">Qualifier 2 — Apr 28–29 (Rds 1&2)</span><span class="cov-badge cb-solo">SOLO STREAM</span></div>
+          <div class="coverage-row"><span class="cov-stage">Playoffs: Group Stage</span><span class="cov-badge cb-shared">FLEX / BACKUP</span></div>
+          <div class="coverage-row"><span class="cov-stage">3rd Place Match (May 15)</span><span class="cov-badge cb-main">3RD PLACE HOST</span></div>
+          <div class="coverage-row"><span class="cov-stage">Grand Finals (May 15)</span><span class="cov-badge cb-shared">CO-CAST</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="streaming-rules">
+      <h4>📜 Streaming Ground Rules (from Rulebook §4)</h4>
+      <div class="rule-item"><span class="rule-bullet">▸</span>All streams must use a minimum <strong>120-second delay</strong> to protect competitive integrity.</div>
+      <div class="rule-item"><span class="rule-bullet">▸</span>Streamers must request permission in <strong>#stream-requests</strong> before going live on a match.</div>
+      <div class="rule-item"><span class="rule-bullet">▸</span>No POV streaming allowed by players during matches.</div>
+      <div class="rule-item"><span class="rule-bullet">▸</span>Ghosting complaints require clear evidence; admins will not act without proof.</div>
+      <div class="rule-item"><span class="rule-bullet">▸</span>Qualifiers are officially NOT broadcasted — streamers covering them do so as content creators.</div>
+      <div class="rule-item"><span class="rule-bullet">▸</span>Finals Bo5 on May 15 should have all 3 streamers active (Streamer A main, B & C co-casting).</div>
+    </div>
+  </div>
+
+  <!-- DAILY ANNOUNCEMENTS -->
+  <div class="section">
+    <div class="section-label">Section 05</div>
+    <div class="section-title"><span class="num">◈</span>Daily Announcements — Round by Round</div>
+
+    <!-- QUALIFIER 1 -->
+    <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--gold);letter-spacing:3px;margin-bottom:14px;padding-left:4px;">— QUALIFIER 1 —</div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Q1 Day 1 — Round 1</div>
+        <div class="ann-date">APRIL 21 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **PYRAMIDS CUP 2026 — QUALIFIER 1 BEGINS!**
+━━━━━━━━━━━━━━━━━━━━━━━━
+⚔️ **Round 1 of 6 | Swiss System**
+📅 Tonight: April 21 | 🕖 7:00 PM CEST
+
+20 teams enter. Only 4 will advance.
+
+**📋 Reminders before you play:**
+• Check your match channel for your opponent
+• Higher seed starts on 🔵 Blue Side (Game 1)
+• Lobby: Custom — Tournament Draft | Global Bans ON
+• 10-min rule: No 5 players = Game 1 forfeit
+• 20-min rule: No 5 players = Match forfeit
+• Post your end-of-game screenshot in your match channel!
+
+**📌 Format:** Bo3 | Swiss System
+**🌐 Server:** EU
+
+Good luck to all teams! 🔥
+@here</div>
+      </div>
+    </div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Q1 Day 2 — Round 2</div>
+        <div class="ann-date">APRIL 22 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **QUALIFIER 1 — ROUND 2**
+━━━━━━━━━━━━━━━━━━━━━━━━
+⚔️ **Round 2 of 6 | Swiss System**
+📅 April 22 | 🕖 7:00 PM CEST
+
+Swiss matchups have been updated. Check the standings in #bracket-standings.
+
+**📋 Side Selection Reminder:**
+• Game 1 → Higher seed picks Blue Side
+• Game 2+ → Losing team picks side first (post in match channel)
+
+**📌 Tonight's matches:**
+→ [Match pairings posted in #bracket-standings]
+
+Results MUST be posted in your match channel with a screenshot. Stay competitive! 💪
+@here</div>
+      </div>
+    </div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Q1 Day 3 — Rounds 3 & 4 (Double Day)</div>
+        <div class="ann-date">APRIL 23 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **QUALIFIER 1 — DOUBLE ROUND NIGHT 🔥**
+━━━━━━━━━━━━━━━━━━━━━━━━
+⚔️ **Rounds 3 & 4 of 6** | Back-to-back Bo3s tonight!
+📅 April 23 | 🕖 7:00 PM – 11:00 PM CEST
+
+Two rounds tonight — stay ready and don't be late.
+
+**⏱️ Between Matches:**
+• Max 5-minute break between Bo3 maps
+• Additional pauses require admin approval
+
+**⚠️ Top 4 race is heating up. Check #bracket-standings for current points.**
+
+Post both match results tonight. Conflicts will be reviewed by admins.
+@here</div>
+      </div>
+    </div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Q1 Day 4 — Rounds 5 & 6 (Final Day)</div>
+        <div class="ann-date">APRIL 24 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **QUALIFIER 1 — FINAL ROUNDS! 🏁**
+━━━━━━━━━━━━━━━━━━━━━━━━
+⚔️ **Rounds 5 & 6 of 6** — Last chance to qualify!
+📅 April 24 | 🕖 7:00 PM – 11:00 PM CEST
+
+This is it. The **Top 4** after tonight advance to Playoffs.
+
+**📊 Tiebreaker Reminder (if needed):**
+1. Overall match score difference (W-L)
+2. Head-to-head match score difference
+3. Additional Bo1 matches (if required by admins)
+
+**🔒 Reminder: Rosters are LOCKED until after Qualifiers.**
+
+After all results are in, the Top 4 will be announced. 🏆
+@here</div>
+      </div>
+    </div>
+
+    <!-- QUALIFIER 2 -->
+    <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--gold);letter-spacing:3px;margin:28px 0 14px;padding-left:4px;">— QUALIFIER 2 —</div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Q2 Day 1 — Round 1</div>
+        <div class="ann-date">APRIL 28 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **PYRAMIDS CUP 2026 — QUALIFIER 2 STARTS NOW!**
+━━━━━━━━━━━━━━━━━━━━━━━━
+⚔️ **Round 1 of 6 | Swiss System**
+📅 April 28 | 🕖 7:00 PM CEST
+
+20 more teams battle for 4 remaining Playoff spots.
+
+**Rules are the same as Qualifier 1. Stay sharp.**
+📌 Check your match channel for tonight's pairings.
+
+See you in the Rift. 🔥
+@here</div>
+      </div>
+    </div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Q2 Day 4 — Rounds 5 & 6 (Final Day)</div>
+        <div class="ann-date">MAY 1 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **QUALIFIER 2 — FINAL NIGHT! 🏁**
+━━━━━━━━━━━━━━━━━━━━━━━━
+⚔️ **Rounds 5 & 6 of 6**
+📅 May 1 | 🕖 7:00 PM – 11:00 PM CEST
+
+The final 4 Playoff spots will be decided tonight.
+
+**After tonight's results: 8 teams total will compete in Playoffs.**
+🗓️ Next up: Group Stage begins May 5!
+
+**🔓 Roster change requests open BETWEEN stages.**
+Submit changes in #roster-changes (max 2 players, keep 3 from original).
+
+Good luck tonight. The road to Rift Legends starts here. 🏆
+@here</div>
+      </div>
+    </div>
+
+    <!-- PLAYOFFS -->
+    <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--teal);letter-spacing:3px;margin:28px 0 14px;padding-left:4px;">— PLAYOFFS · GROUP STAGE —</div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Playoffs Kickoff — Group Stage Day 1</div>
+        <div class="ann-date">MAY 5 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **PYRAMIDS CUP 2026 — PLAYOFFS BEGIN! 🎉**
+━━━━━━━━━━━━━━━━━━━━━━━━
+🏆 **Round Robin Group Stage | May 5–13**
+📅 May 5 | 🕖 7:00 PM – 10:00 PM CEST
+
+8 teams. 2 groups. Only the best survive.
+
+**🔵 GROUP A** — [Teams TBD after seeding]
+**🔴 GROUP B** — [Teams TBD after seeding]
+
+**⚠️ NEW RULE ACTIVE: Fearless Draft**
+Any champion picked in a game is BANNED for BOTH teams for the rest of that series.
+Champion pools matter now more than ever.
+
+**📋 Playoff Lobby Rules:**
+• Lobbies hosted by Tournament Admins
+• No spectators (streamers use 120s delay)
+• Results posted in your Playoff match channel
+
+🔴 **LIVE: Check #stream-schedule for tonight's stream links!**
+@everyone</div>
+      </div>
+    </div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Group Stage — Days 2–6 (Template)</div>
+        <div class="ann-date">MAY 6–13 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **PLAYOFFS — GROUP STAGE | Day [X]**
+━━━━━━━━━━━━━━━━━━━━━━━━
+⚔️ **Group A Game [X] + Group B Game [X]**
+📅 [Date] | 🕖 7:00 PM CEST
+
+**📊 Current Standings:** See #bracket-standings
+
+**Tonight's Matchups:**
+🔵 Group A: [Team X] vs [Team Y]
+🔴 Group B: [Team A] vs [Team B]
+
+🎥 Streamer A covering Group A | Streamer B covering Group B
+Stream links in #stream-schedule (120s delay active)
+
+Fearless Draft pools are updated. Plan accordingly.
+@here</div>
+      </div>
+    </div>
+
+    <!-- SEMIFINALS -->
+    <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--teal);letter-spacing:3px;margin:28px 0 14px;padding-left:4px;">— PLAYOFFS · SEMIFINALS —</div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Semifinals Day</div>
+        <div class="ann-date">MAY 14 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺 **PYRAMIDS CUP 2026 — SEMIFINALS! ⚔️**
+━━━━━━━━━━━━━━━━━━━━━━━━
+🏆 **Single Elimination | Semi Finals**
+📅 May 14 | 🕖 7:00 PM – 9:00 PM CEST
+
+The top 4 teams face off. Two will fall. Two will fight for glory.
+
+**🥊 SF1:** [Team 1] vs [Team 4]
+**🥊 SF2:** [Team 2] vs [Team 3]
+
+**📌 Format:** Bo3 | Fearless Draft
+**🎥 Streamer A hosts SF1 | Streamer B supports SF2**
+Stream links in #stream-schedule
+
+⚠️ Surrender is FORBIDDEN in official matches.
+Nexus destroyed = Win. No exceptions.
+
+May the best teams advance. 🔥
+@everyone</div>
+      </div>
+    </div>
+
+    <!-- FINALS -->
+    <div style="font-family:'Orbitron',sans-serif;font-size:12px;color:var(--gold);letter-spacing:3px;margin:28px 0 14px;padding-left:4px;">— GRAND FINALS —</div>
+
+    <div class="announcement-block">
+      <div class="ann-header">
+        <div class="ann-title">📣 Grand Finals Day</div>
+        <div class="ann-date">MAY 15 · 7 PM CEST</div>
+      </div>
+      <div class="ann-body">
+        <div class="discord-msg">🏺👑 **PYRAMIDS CUP 2026 — GRAND FINALS** 👑🏺
+━━━━━━━━━━━━━━━━━━━━━━━━
+🏆 The moment you've been waiting for.
+📅 May 15 | 🕖 7:00 PM – 11:00 PM CEST
+
+**🥉 3rd Place Match**
+[Team A] vs [Team B] — Bo3 | Fearless Draft
+🎥 Streamer C hosting
+
+**🏆 GRAND FINALS**
+[Champion 1] vs [Champion 2] — **Bo5** | Fearless Draft
+🎥 Streamer A (main) | Streamer B & C (co-cast)
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+🌟 **WINNER EARNS:**
+→ Pyramids Cup 2026 Championship
+→ Slot in **WildCircuit: Rift Legends Battle**
+(Residency rules of Rift Legends apply)
+
+**🔴 ALL STREAMS LIVE — see #stream-schedule**
+120-second delay active on all streams.
+
+This is it. Who claims the throne? 🏺
+@everyone</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  Pyramids Cup 2026 · Discord Operations Plan · Pyramids Queue × Vicious Esports × Riot EMEA Rift Legends Program
+</footer>
+
+</body>
+</html>
